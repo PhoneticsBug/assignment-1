@@ -6,6 +6,7 @@ const DataFetcher = ({ onDataFetched }) => {
             try {
                 const response = await fetch('http://localhost:4000/sick');
                 const data = await response.json();
+                console.info("calling api")
                 onDataFetched(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -13,7 +14,7 @@ const DataFetcher = ({ onDataFetched }) => {
         };
 
         fetchData();
-    }, []); // 빈 배열을 의존성 배열로 사용하여 컴포넌트가 처음 한 번만 실행되도록 설정
+    }, []); // 빈 배열 === 처음 로딩될 때 한번만 호출됨
 
     return null;
 };

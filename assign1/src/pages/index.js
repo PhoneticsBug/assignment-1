@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SearchBox from '../components/searchbox.js';
 import SearchResults from '../components/searchresult.js';
 import DataFetcher from '../components/datafetcher.js'; // DataFetcher 컴포넌트를 import
@@ -24,9 +24,13 @@ const SearchPage = () => {
  온라인으로 참여하기</h1>
                 <SearchBox value={search} onChange={onSearchChange} />
                 {/* <SearchResults search={search} data={sickData} /> */}
+            </div>
+            <div className='result-box'>
                 {search && <SearchResults search={search} data={sickData} />}
                 <DataFetcher onDataFetched={onDataFetched} />
             </div>
+                
+            
         </>
     );
 };
