@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SearchBox from '../components/searchbox.js';
 import SearchResults from '../components/searchresult.js';
-import DataFetcher from '../components/datafetcher.js'; // DataFetcher 컴포넌트를 import
+import DataFetcher from '../components/datafetcher.js';
 import "../css/searchpage.css"
 
 const SearchPage = () => {

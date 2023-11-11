@@ -1,20 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const DataFetcher = ({ onDataFetched }) => {
+    const [lastFetched, setLastFetched] = useState(null);
+    const expireTime = 60 * 1000; // 1분 (기본 ms)
+    const serverURL = process.env.REACT_APP_SERVER_URL;
+
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:4000/sick');
-                const data = await response.json();
-                console.info("calling api")
-                onDataFetched(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
+            const currentTime = new Date().getTime();
+
+            // 만약 마지막으로 데이터를 가져온 시간이 없거나 expire time을 초과했다면 데이터를 가져옴
+            if (!lastFetched || (currentTime - lastFetched > expireTime)) {
+                try {
+                    const response = await fetch(serverURL);
+                    const data = await response.json();
+                    console.info("calling api");
+                    onDataFetched(data);
+                    setLastFetched(currentTime); // 마지막으로 데이터를 가져온 시간 갱신
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
             }
         };
 
         fetchData();
-    }, []); // 빈 배열 === 처음 로딩될 때 한번만 호출됨
+    }, [lastFetched, onDataFetched, expireTime]);
 
     return null;
 };
