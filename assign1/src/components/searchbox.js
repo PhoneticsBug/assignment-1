@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const SearchBox = ({ value, onChange }) => {
     return (
         <div className='search-box'>
@@ -8,7 +9,7 @@ const SearchBox = ({ value, onChange }) => {
                 type="text" value={value} 
                 onChange={onChange}
                 placeholder='질환명을 입력해 주세요.' />
-            <button className='search-btn'>검색</button>
+            <button className='search-btn'> 🔍︎ </button>
         </div>
     );
 };
