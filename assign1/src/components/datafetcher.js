@@ -9,7 +9,6 @@ const DataFetcher = ({ onDataFetched }) => {
         const fetchData = async () => {
             const currentTime = new Date().getTime();
 
-            // 만약 마지막으로 데이터를 가져온 시간이 없거나 expire time을 초과했다면 데이터를 가져옴
             if (!lastFetched || (currentTime - lastFetched > expireTime)) {
                 try {
                     const response = await fetch(serverURL);
@@ -20,11 +19,13 @@ const DataFetcher = ({ onDataFetched }) => {
                 } catch (error) {
                     console.error('Error fetching data:', error);
                 }
+            } else {
+                console.info("Using cached data");
             }
         };
 
         fetchData();
-    }, [lastFetched, onDataFetched, expireTime]);
+    }, [lastFetched, onDataFetched, expireTime, serverURL]);
 
     return null;
 };

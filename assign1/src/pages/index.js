@@ -21,7 +21,7 @@ const SearchPage = () => {
         <div className='full-page'>
             <div className='search-page'>
                 <h1 className='search-title'>국내 모든 임상시험 검색하고
- 온라인으로 참여하기</h1>
+                                                온라인으로 참여하기</h1>
                 <SearchBox value={search} onChange={onSearchChange} />
                 {/* <SearchResults search={search} data={sickData} /> */}
             </div>

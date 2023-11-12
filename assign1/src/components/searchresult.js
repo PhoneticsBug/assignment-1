@@ -33,7 +33,7 @@ const SearchResults = ({ search, data }) => {
     return (
         <div className='search-results'>
             {filteredResults.length === 0 ? (
-                <p className='no-result'>  검색어 없음</p>
+                <p className='no-result'> 검색어 없음</p>
             ) : (
                 filteredResults.map((result, index) => (
                     <p

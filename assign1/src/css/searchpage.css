@@ -57,7 +57,9 @@
     align-items: center;
     justify-content: center;
 }
-
+.no-result {
+    margin-left: 20px;
+}
 .search-results {
     /* margin-top: 5px; */
     padding-top: 8px;
